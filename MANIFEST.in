@@ -1,0 +1,5 @@
+exclude README.md
+exclude .gitignore
+include LICENSE
+include doc/Makefile
+recursive-include doc/source *

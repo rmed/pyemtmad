@@ -164,7 +164,7 @@ class ParkingApi(object):
             min_free (list[int]): Number of free spaces to check. Must have the
                 same length of ``poi_info``.
             field_codes (list[tuple]): List of tuples with the format
-                ``(list[codes], name). Check the API documentation.
+                ``(list[codes], name)``. Check the API documentation.
 
         Returns:
             Status boolean and parsed response (list[InfoParkingPoi]), or

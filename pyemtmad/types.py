@@ -416,8 +416,8 @@ class ListLineInfo(object):
         self.end_date = kwargs.get('dateEnd', '').replace('\\', '').strip()
         self.line = int(kwargs.get('line', '0'))
         self.label = kwargs.get('label')
-        self.header_a = kwargs.get('nameA')
-        self.header_b = kwargs.get('nameB')
+        self.header_a = kwargs.get('nameA', '').strip()
+        self.header_b = kwargs.get('nameB', '').strip()
 
         self._json = kwargs
 

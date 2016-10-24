@@ -447,7 +447,6 @@ class NodeLinesItem(object):
         for line in lines:
             if line:
                 elements = line.replace('\\', '').strip().split('/')
-                print(elements)
                 # 1 = forward, 2 = backward
                 direction = 'forward' if elements[1] == '1' else 'backward'
                 self.lines.append((int(elements[0]), direction))

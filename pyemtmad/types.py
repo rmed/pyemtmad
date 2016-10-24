@@ -445,11 +445,12 @@ class NodeLinesItem(object):
         self.lines = []
 
         for line in lines:
-            elements = line.replace('\\', '').strip().split('/')
-
-            # 1 = forward, 2 = backward
-            direction = 'forward' if elements[1] == '1' else 'backward'
-            self.lines.append((int(elements[0]), direction))
+            if line:
+                elements = line.replace('\\', '').strip().split('/')
+                print(elements)
+                # 1 = forward, 2 = backward
+                direction = 'forward' if elements[1] == '1' else 'backward'
+                self.lines.append((int(elements[0]), direction))
 
         self._json = kwargs
 

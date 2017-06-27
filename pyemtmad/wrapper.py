@@ -178,7 +178,7 @@ class Wrapper(object):
             id_client=self._emt_id,
             passkey=self._emt_pass,
             address=address,
-            language=lang
+            lang=lang
         )
 
         # This server uses TLSv1

@@ -202,6 +202,45 @@ class BusApi(object):
         values = util.response_list(result, 'resultValues')
         return True, [emtype.RouteLinesItem(**a) for a in values]
 
+
+
+    def get_route_lines_route(self, **kwargs):
+        """Obtain itinerary for one or more lines in the given date.
+
+        Args:
+            day (int): Day of the month in format DD.
+                The number is automatically padded if it only has one digit.
+            month (int): Month number in format MM.
+                The number is automatically padded if it only has one digit.
+            year (int): Year number in format YYYY.
+            lines (list[int] | int): Lines to query, may be empty to get
+                all the lines.
+
+        Returns:
+            Status boolean and parsed response (list[RouteLinesItem]), or message
+            string in case of error.
+        """
+        # Endpoint parameters
+        select_date = util.date_string(
+            kwargs.get('day', '01'),
+            kwargs.get('month', '01'),
+            kwargs.get('year', '1970')
+        )
+
+        lines = util.ints_to_string(kwargs.get('lines', []))
+
+        params = {'SelectDate': select_date, 'Lines': lines}
+
+        # Request
+        result = self.make_request('bus', 'get_route_lines_route', **params)
+
+        if not util.check_result(result):
+            return False, result.get('resultDescription', 'UNKNOWN ERROR')
+
+        # Parse
+        values = util.response_list(result, 'resultValues')
+        return True, [emtype.RouteLinesItem(**a) for a in values]
+
     def get_times_lines(self, **kwargs):
         """Obtain current line times for the given lines.
 
